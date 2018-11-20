@@ -103,13 +103,15 @@ def str2date(date):
 
 
 def preprocess(file_in, file_out):
-    fi = open(file_in, mode='r', encoding='utf-8')
-    fo = open(file_out, mode='w', encoding='utf-8')
-    for line in fi:
-        if line[0] == '}':
-            fo.write('\t},\n')
-        else:
-            fo.write('\t'+line)
+    fi = open(file_in, mode='r', encoding='utf-8').readlines()
+    with open(file_out, mode='w', encoding='utf-8') as fo:
+        fo.write('[')
+        for line in fi[:-1]:
+            if line[0] == '}':
+                fo.write('\t},\n')
+            else:
+                fo.write('\t'+line)
+        fo.write('}\n]')
 
 
 if __name__ == '__main__':
