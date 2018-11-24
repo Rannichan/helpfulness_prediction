@@ -105,15 +105,17 @@ def str2date(date):
 def preprocess(file_in, file_out):
     fi = open(file_in, mode='r', encoding='utf-8')
     fo = open(file_out, mode='w', encoding='utf-8')
+    fo.write('[')
     for line in fi:
         if line[0] == '}':
             fo.write('\t},\n')
         else:
             fo.write('\t'+line)
+    fo.write(']')
 
 
 if __name__ == '__main__':
     # preprocess('../data/fortnite_review_full.json', '../data/fortnite_review_full_new.json')
     # sortbykey('../data/fortnite_review_full.json', '../data/fortnite_review_full_sorted.json')
     # data_analysis('../data/fortnite_review_full_sorted.json')
-    vote_analysis('../data/fortnite_review_full_sorted.json')
+    # vote_analysis('../data/fortnite_review_full_sorted.json')

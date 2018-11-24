@@ -86,6 +86,13 @@ def method1(file_in, file_pos, file_neg, file_ukn):
 
 
 def method2(file_in, file_pos, file_neg):
+    """
+    extract positive samples an negative samples from file_in, then write them into file_pos and file_neg
+    :param file_in: path of the input file
+    :param file_pos: path of the positive file
+    :param file_neg: path of the negative file
+    :return:
+    """
     fi = open(file_in, mode='r', encoding='utf-8')
     fpos = open(file_pos, mode='w', encoding='utf-8')
     fneg = open(file_neg, mode='w', encoding='utf-8')

@@ -4,11 +4,12 @@ from data_format import addLable
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--inputpos", "-ip", type=str, default="fortnite_review_pos_1105.json",
+    parser.add_argument("--inputpos", "-ip", type=str, default="reviews_pos.json",
                         help="input positive json file")
-    parser.add_argument("--inputneg", "-in", type=str, default="fortnite_review_neg_1105.json",
+    parser.add_argument("--inputneg", "-in", type=str, default="reviews_neg.json",
                         help="input negative json file")
-    parser.add_argument("--output", "-o", type=str, default="fortnite.500.txt", help="output training file")
+    parser.add_argument("--output", "-o", type=str, default="reviews_train.txt",
+                        help="output training file")
     args = parser.parse_args()
 
     json_dir = '../data/json/'

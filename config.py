@@ -7,7 +7,7 @@ punc_set = set(punctuation)
 
 import re
 punc0_pattern = re.compile("([.,?!…:;&])([.,?!…:;&]*)")
-punc1_pattern = re.compile("[%*-/#]+")
+punc1_pattern = re.compile("[%*\-/#\'\"]+")
 digit_pattern = re.compile("[0-9]+")
 emoji_pattern = re.compile("["
                            u"\U00010000-\U0010ffff"

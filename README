@@ -1,9 +1,0 @@
-data/json -- Original json format file are saved in this directory. Take a look in of the sample data and make sure the data format matchs with the sample.
-data/raw -- Review text will be extract from the json file and be saved in this directory after being cleaned.
-data/train -- Data in data/raw will be merged and transformed in the special format for FastText training. And then saved in this directory.
-
-
-Run following command in terminator to prepare training data:
-➜  cd data_prep
-➜  python run_prep.py -ip fortnite_review_pos_1105.json -in fortnite_review_neg_1105.json -o fortnite.txt
-(The first param is original positive json file name. The second param is original negative json file name. The third param is last-generated training file.)

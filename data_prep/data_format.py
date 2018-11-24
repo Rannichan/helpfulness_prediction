@@ -10,8 +10,8 @@ def addLable (filein_pos, filein_neg, fileout):
     fpos = open(filein_pos, encoding='utf-8', mode='r')
     fneg = open(filein_neg, encoding='utf-8', mode='r')
     fout = open(fileout, encoding='utf-8', mode='w')
-    pos_label = "__label__helpful__"
-    neg__label = "__label__unhelpful__"
+    pos_label = "__label__helpful "
+    neg__label = "__label__unhelpful "
     text_list = []
     for line in fpos:
         text_list.append(pos_label+line)
