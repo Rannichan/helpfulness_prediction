@@ -22,5 +22,3 @@ if __name__ == "__main__":
     addLable(filein_pos=raw_files[0],
              filein_neg=raw_files[1],
              fileout=train_dir+args.output)
-
-

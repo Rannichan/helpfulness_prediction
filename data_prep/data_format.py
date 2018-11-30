@@ -23,9 +23,9 @@ def addLable (filein_pos, filein_neg, fileout):
 
 
 if __name__ == "__main__":
-    posfile = "../data/raw/fortnite.500.pos.txt"
-    negfile = "../data/raw/fortnite.500.neg.txt"
-    outfile = "../data/train/fortnite.500.txt"
+    posfile = "../data/raw/pos.txt"
+    negfile = "../data/raw/neg.txt"
+    outfile = "../data/train/human_test.txt"
     addLable(filein_pos=posfile,
              filein_neg=negfile,
              fileout=outfile)

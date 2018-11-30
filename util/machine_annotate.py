@@ -88,6 +88,10 @@ def method1(file_in, file_pos, file_neg, file_ukn):
 def method2(file_in, file_pos, file_neg):
     """
     extract positive samples an negative samples from file_in, then write them into file_pos and file_neg
+    reviews with total number of votes less then a or number of words less than b will be discarded;
+    remaining reviews with helpful score >= c will be annotated as helpful (positive)
+    remaining reviews with helpful_score <= d will be annotated as unhelpful (negative)
+    a, b, c, d are parameters and are obtained from experiment
     :param file_in: path of the input file
     :param file_pos: path of the positive file
     :param file_neg: path of the negative file

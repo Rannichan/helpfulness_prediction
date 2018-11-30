@@ -6,11 +6,11 @@ data/train -- Data in data/raw will be merged and transformed in the special for
 # How to Prepare Training Data
 Run following command in terminator to prepare training data:
 ```
-    cd data/json
+    # under the directory 'data/json'
     cat pos/* | sed '/\]\[/d' | sed 's/}$/},/g' | tail -r | sed '2s/},$/}/g'| tail -r > reviews_pos.json
     cat neg/* | sed '/\]\[/d' | sed 's/}$/},/g' | tail -r | sed '2s/},$/}/g'| tail -r > reviews_neg.json
 
-    cd data_prep
+    # under the directory 'data_prep'
     python run_prep.py -ip reviews_pos.json -in reviews_neg.json -o reviews_train.txt
     # The first param is original positive json file name.
     # The second param is original negative json file name.
@@ -18,16 +18,31 @@ Run following command in terminator to prepare training data:
 ```
 
 # How to Train the Classifier
-First, download and compile [FastText library](https://fasttext.cc) in the main directory of this project
-Then, run following command to train and test the classifier:
+First, you need to intstall FastTest library into your environment:
 ```
-    cd data/train
+    $ git clone https://github.com/facebookresearch/fastText.git
+    $ cd fastText
+    $ pip install .
+```
+
+Second, you may need to download pre-trained word vector file form [FastText official website](https://s3-us-west-1.amazonaws.com/fasttext-vectors/wiki-news-300d-1M-subword.vec.zip).
+
+At last, we need to divide the whole dataset into training set and validation set, and train on the training set:
+```
+    # under the directory 'data/train'
     wc reviews_train.txt
-    # (assume the output is) 1811  100354  555352 reviews_train.txt
+    # assume the output is 1811  100354  555352 reviews_train.txt
     head -n 1511 reviews_train.txt > reviews.train
     tail -n 300 reviews_train.txt > reviews.valid
 
-    cd fastText
-    ./fasttext supervised -input ../data/train/reviews.train -output ../data/model/reviews -epoch 30
-    ./fasttext test ../data/model/reviews.bin ../data/train/reviews.valid
+    # under the directory 'main'
+    python main.py --mode train --model ../data/train/model/reviews.bin --train ../data/train/reviews.train --wordvector ../data/wiki-news-300d-1M-subword.vec
+    # we do not provide hyperparameters of training process here, but you can directly modify it in the main.py
+```
+
+# How to Test the Classifier
+```
+    # under the directory 'main'
+    python main.py --mode test --model ../data/train/model/reviews.bin --test ../data/train/reviews.valid
+    # 2 files (pridicted correctly and predicted wrongly) will be generated at the same path of test file
 ```

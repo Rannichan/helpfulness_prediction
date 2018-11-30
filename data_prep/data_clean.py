@@ -13,10 +13,10 @@ from config import least_length
 
 
 def replace_noneng(line):
-    line = punc1_pattern.sub(r'', line)
+    line = punc1_pattern.sub(r' ', line)
     line = punc0_pattern.sub(r' \1 ' ,line)
-    line = emoji_pattern.sub(r' <emoji> ', line)
-    line = digit_pattern.sub(r' <num> ', line)
+    line = emoji_pattern.sub(r' emoji ', line)
+    line = digit_pattern.sub(r' num ', line)
     return line
 
 def remove_stopword(line):

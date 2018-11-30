@@ -1,7 +1,6 @@
 import json
 from matplotlib import pyplot as plt
 import numpy as np
-from sklearn.linear_model import LinearRegression
 
 
 def sortbykey(file_in, file_out, key='helpful_score'):
@@ -115,6 +114,7 @@ def preprocess(file_in, file_out):
 
 
 if __name__ == '__main__':
+    pass
     # preprocess('../data/fortnite_review_full.json', '../data/fortnite_review_full_new.json')
     # sortbykey('../data/fortnite_review_full.json', '../data/fortnite_review_full_sorted.json')
     # data_analysis('../data/fortnite_review_full_sorted.json')
