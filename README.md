@@ -38,7 +38,7 @@ At last, we need to divide the whole dataset into training set and validation se
     $ tail -n 300 reviews_train.txt > reviews.valid
 
     # under the directory 'main'
-    $ python main.py --mode train --model ../data/train/model/reviews.bin --train ../data/train/reviews.train --wordvector ../data/wiki-news-300d-1M-subword.vec
+    $ python main.py --mode train --model ../data/model/reviews.bin --train ../data/train/reviews.train --wordvector ../data/wiki-news-300d-1M-subword.vec
     # we do not provide hyperparameters of training process here, but you can directly modify it in the main.py
 ```
 

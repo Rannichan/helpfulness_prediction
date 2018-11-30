@@ -5,7 +5,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", "-m", type=str, default="train",
                         help="train model or use the model to do prediction")
-    parser.add_argument("--model", "-mf", type=str, default="../data/train/model/reviews.bin",
+    parser.add_argument("--model", "-mf", type=str, default="../data/model/reviews.bin",
                         help="model file")
     parser.add_argument("--train", "-tr", type=str, default="../data/train/reviews.train",
                         help="training file")
@@ -36,5 +36,6 @@ if __name__ == "__main__":
                 rf.write(line)
             else:
                 wf.write(line)
+        # print(classifier.test(args.test))
     else:
         print('Wrong mode!')
