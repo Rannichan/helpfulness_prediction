@@ -13,14 +13,14 @@ Run following command in terminator to prepare training data:
     $ cat neg/* | sed '/\]\[/d' | sed 's/}$/},/g' | tail -r | sed '2s/},$/}/g'| tail -r > reviews_neg.json
 
     # under the directory 'data_prep'
-    $ python run_prep.py -ip reviews_pos.json -in reviews_neg.json -o reviews_train.txt
+    $ python3 run_prep.py -ip reviews_pos.json -in reviews_neg.json -o reviews_train.txt
     # The first param is original positive json file name.
     # The second param is original negative json file name.
     # The third param is last-generated training file.
 ```
 
 # How to Train the Classifier
-First, you need to intstall FastTest library into your environment:
+First, you need to intstall FastTest library into your python3 environment:
 ```
     $ git clone https://github.com/facebookresearch/fastText.git
     $ cd fastText
@@ -38,13 +38,13 @@ At last, we need to divide the whole dataset into training set and validation se
     $ tail -n 300 reviews_train.txt > reviews.valid
 
     # under the directory 'main'
-    $ python main.py --mode train --model ../data/model/reviews.bin --train ../data/train/reviews.train --wordvector ../data/wiki-news-300d-1M-subword.vec
+    $ python3 main.py --mode train --model ../data/model/reviews.bin --train ../data/train/reviews.train --wordvector ../data/wiki-news-300d-1M-subword.vec
     # we do not provide hyperparameters of training process here, but you can directly modify it in the main.py
 ```
 
 # How to Test the Classifier
 ```
     # under the directory 'main'
-    $ python main.py --mode test --model ../data/train/model/reviews.bin --test ../data/train/reviews.valid
+    $ python3 main.py --mode test --model ../data/model/reviews.bin --test ../data/train/reviews.valid
     # 2 files (pridicted correctly and predicted wrongly) will be generated at the same path of test file
 ```
